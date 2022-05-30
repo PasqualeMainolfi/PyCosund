@@ -1,6 +1,6 @@
 ## PyCsound  
 
-A package to run Csound from python.
+A package to run Csound from python (Not yet published!).
 
 ```python
 cs = PyCsound()
