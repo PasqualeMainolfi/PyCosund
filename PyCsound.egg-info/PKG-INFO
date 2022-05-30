@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: PyCsound
-Version: 1.0.1
+Version: 1.0.2
 Summary: Working with Csound in Python...
 Author: Pasquale Mainolfi
 Author-email: <mnlpql@gmail.com>
@@ -27,7 +27,7 @@ pip install pycsound
 
 ```python
 
-import PyCsound
+from pycsound import PyCsound
 import random
 
 cs = PyCsound()

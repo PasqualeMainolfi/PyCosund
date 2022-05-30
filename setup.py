@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 NAME = "PyCsound"
-VERSION = "1.0.1"
+VERSION = "1.1"
 DESCRIPTION = "Working with Csound in Python..."
 
 with open("README.md", "r", encoding="utf-8") as f:
