@@ -1,4 +1,4 @@
-from pycsound.pycsound import PyCsound
+from main.pycsound import PyCsound
 import random
 
 
