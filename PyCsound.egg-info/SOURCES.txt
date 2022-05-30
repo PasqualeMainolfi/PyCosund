@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+PyCsound.egg-info/PKG-INFO
+PyCsound.egg-info/SOURCES.txt
+PyCsound.egg-info/dependency_links.txt
+PyCsound.egg-info/requires.txt
+PyCsound.egg-info/top_level.txt

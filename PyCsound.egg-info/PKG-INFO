@@ -1,3 +1,20 @@
+Metadata-Version: 2.1
+Name: PyCsound
+Version: 1.0.1
+Summary: Working with Csound in Python...
+Author: Pasquale Mainolfi
+Author-email: <mnlpql@gmail.com>
+License: UNKNOWN
+Keywords: csound,sound,sound synthesis,python
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 ## PyCsound  
 
 A package to run Csound from python.
@@ -10,7 +27,7 @@ pip install pycsound
 
 ```python
 
-from pycsound import PyCsound
+import PyCsound
 import random
 
 cs = PyCsound()
@@ -73,5 +90,7 @@ For save generated file:
 cs.save_csound_file(mode="csd", name="file_generated.csd", path="path_to_save_the_file_generated")
 
 ```
+
+
 
 

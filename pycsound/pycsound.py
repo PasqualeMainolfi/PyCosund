@@ -1,11 +1,11 @@
 
-from main.exceptions import CsoundFileCompilationError, FileExtensionError, SaveError, CsoundError
+from pycsound.exceptions import CsoundFileCompilationError, FileExtensionError, SaveError, CsoundError
 from typing import TextIO
 import subprocess
 import os
 import platform
 import sys
-from main.perf_graph import PlotPerformance
+from pycsound.perf_graph import PlotPerformance
 
 class PyCsound:
 
