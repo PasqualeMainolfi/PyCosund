@@ -1,8 +1,9 @@
+import matplotlib
 from setuptools import setup, find_packages
 
 
 NAME = "PyCsound"
-VERSION = "0.0.1"
+VERSION = "1.0.0"
 DESCRIPTION = "Working with Csound in python..."
 
 
@@ -17,5 +18,5 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3"
     ],
-    install_requires=[]
+    install_requires=["numpy", "matplotlib"]
 )
