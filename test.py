@@ -52,6 +52,6 @@ cs.add_score_statement(statement="t", params=[0, 240])
 cs.compile()
 
 # cs.save_csound_file(mode="csd")
-cs.plot_performance()
+# cs.plot_performance()
 
-# cs.run()
+cs.run()

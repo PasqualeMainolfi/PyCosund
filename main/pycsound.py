@@ -7,7 +7,7 @@ import platform
 import sys
 from main.perf_graph import PlotPerformance
 
-class main:
+class PyCsound:
 
     def __init__(self) -> None:
         self.__options = None
