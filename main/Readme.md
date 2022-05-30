@@ -3,6 +3,10 @@
 A package to run Csound from python (Not yet published!).
 
 ```python
+
+from main.pycsound import PyCsound
+import random
+
 cs = PyCsound()
 cs.option = "-o dac"
 cs.header = {"sr": 44100, "kr": 44100, "nchnls": 2, "0dbfs": 1}
