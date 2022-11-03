@@ -12,6 +12,10 @@ class PyCsound:
     def __init__(self) -> None:
         self.__options = None
         self.__header = {"sr": 44100, "ksmps": 1, "nchnls": 2, "0dbfs": 1}
+        self.__ksmps = None
+        self.__nchnls = None
+        self.__zerodbfs = None
+        self.__sr = None
         self.__orc = None
         self.__sco = None
         self.__score_statements = {"i": {}}
@@ -47,9 +51,41 @@ class PyCsound:
     
     @header.setter
     def header(self, header: dict) -> None:
-        self.__header = header
+        self.__header.update(header)
     
-    def add_score_statement(self, statement: str, params: list) -> None:
+    @property
+    def ksmps(self):
+        return self.__ksmps
+    
+    @ksmps.setter
+    def ksmps(self, ksmps: int) -> None:
+        self.__header["ksmps"] = ksmps
+    
+    @property
+    def sr(self):
+        return self.__sr
+    
+    @sr.setter
+    def sr(self, sr: int) -> None:
+        self.__header["sr"] = sr
+
+    @property
+    def nchnls(self):
+        return self.__nchnls
+    
+    @nchnls.setter
+    def nchnls(self, nchnls: int) -> None:
+        self.__header["nchnls"] = nchnls
+    
+    @property
+    def zerodbfs(self):
+        return self.__zerodbfs
+    
+    @zerodbfs.setter
+    def zerodbfs(self, zerodbfs: int) -> None:
+        self.__header["0dbfs"] = zerodbfs
+    
+    def add_to_score(self, statement: str, params: list) -> None:
 
         """
         Generate score statements, see Csound manual at http://www.csounds.com/manual/html/ScoreStatements.html
@@ -60,7 +96,7 @@ class PyCsound:
 
         assert statement in ["i", "f", "t"], "[INFO] statement not yet implemented!"
         
-        string_params = " ".join(list(map(str, params)))
+        string_params = "\t".join(list(map(str, params)))
 
         if statement == "i":
 
@@ -86,7 +122,7 @@ class PyCsound:
     def compile(self) -> str:
 
         """
-        Compile orchestra and score file
+        Compile csound file
         """
 
         try:
@@ -98,8 +134,10 @@ class PyCsound:
 
         head = ""
         for key in self.__header:
-            head += key + " " + "=" + " " + str(self.__header[key]) + "\n"
-        self.__orc = "\n" + head + self.__orc
+            head += key + "\t=\t" + str(self.__header[key]) + "\n"
+        head += self.__orc
+        self.__orc = "\n" + head + "\n"
+
 
         if self.__sco is None:
             score = ""
@@ -118,7 +156,7 @@ class PyCsound:
     def run(self, *argv):
 
         """
-        Run Csound
+        run Csound file
 
         It is possible to launch csound by compiling 
         by default orc and sco, or indicate in the 
@@ -199,7 +237,7 @@ class PyCsound:
         """
         Save orc or sco file generated
 
-        :param -> mode: specifies whether to save orc or sco
+        :param -> mode: specifies whether to save orc or sco or csd
         :param -> name: name of file
         :param -> path: path to save the file
         """
@@ -211,8 +249,6 @@ class PyCsound:
             print("[ERROR] The specified type of file to save must be orc, sco or csd!")
             sys.exit()
         
-        self.compile()
-
         name = name if name else "generated_file"
 
         path = path + "/" if path else ""
@@ -236,7 +272,29 @@ class PyCsound:
     def plot_performance(self):
         p = PlotPerformance(database=self.__instruments_params["i"])
         p.time_instr()
+    
+    def create_data_table(self, table_number: int, data: list, normalize: bool = False, guard_point: bool = False) -> None:
+
+        """
+        generate function-table
+
+        table_number: int, p1 in f-statement
+        data: list, array of values
+        guard_point: bool, add guard point
+        """
         
+        gp = 1 if guard_point else 0
+        fac = 1 if normalize else -1
+        gen = 2 * fac
+
+        n = len(data) + gp
+
+        d = [table_number, 0, n, gen]
+        for value in data:
+            d.append(value)
+        
+        self.add_to_score(statement="f", params=d)
+
 
 
 

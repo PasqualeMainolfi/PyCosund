@@ -32,8 +32,8 @@ for i in range(10):
     dur = random.uniform(0, 5)
     score = cs.add_score_statement(statement="i", params=[1, atk, dur, 0.5, 110 * (i + 1)])
 
-cs.add_score_statement(statement="f", params=[1, 0, 4096, 10, 1])
-cs.add_score_statement(statement="t", params=[0, 240])
+cs.add_to_score(statement="f", params=[1, 0, 4096, 10, 1])
+cs.add_to_score(statement="t", params=[0, 240])
 
 cs.compile()
 cs.run()
