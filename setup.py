@@ -2,11 +2,13 @@ from setuptools import setup, find_packages
 
 
 NAME = "PyCsound"
-VERSION = "1.0.2"
+VERSION = "1.1.0"
 DESCRIPTION = "Working with Csound in Python..."
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
+
+license = "LICENSE.txt"
 
 setup(
     name=NAME,
@@ -25,5 +27,6 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "License :: OSI Approved :: MIT License",
     ],
-    install_requires=["numpy", "matplotlib"]
+    install_requires=["numpy", "matplotlib"],
+    license_file=license
 )
